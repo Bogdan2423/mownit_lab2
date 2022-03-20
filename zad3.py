@@ -15,9 +15,10 @@ def visit(T, matrix, visited, v, s, t):
             visit(T, matrix, visited, i, s, t)
 
 
-resistance_graph = [[-1, 1, 3],
-                    [1, -1, 2],
-                    [3, 2, -1]]
+resistance_graph = [[-1, 1, 3, 2],
+                    [1, -1, 2,-1],
+                    [3, 2, -1,3],
+                    [2,-1,3,-1]]
 
 s = 0
 t = 2
@@ -34,11 +35,16 @@ right_vector[t] = 0
 
 visit(resistance_graph, matrix, visited, s, s, t)
 
-solution = np.linalg.solve(matrix,right_vector))
+solution = np.linalg.solve(matrix,right_vector)
 
-current = [[-1 for _ in range(len(matrix))] for _ in range(len(matrix))]
+print(solution)
+
+current = [[0 for _ in range(len(matrix))] for _ in range(len(matrix))]
 
 for i in range(len(solution)):
     for j in range(i+1, len(solution)):
-        if solution[i]>0 and solution[i]>0:
+        if solution[i] > 0 and solution[i] > 0:
             current[i][j] = (solution[j]-solution[i])/resistance_graph[i][j]
+
+for row in current:
+    print(row)
