@@ -28,15 +28,26 @@ def test(current):
     return True
 
 
+f=open("resistance.txt")
+input=f.read().split()
+print(input)
+s=int(input[0])
+t=int(input[1])
+E=float(input[2])
+
+adj_list=[]
+for i in range(3,len(input)):
+    adj_list.append(input[i][1:-1])
+
+print(adj_list)
 resistance_graph = [[-1, 1, 3, 2, -1],
                     [1, -1, 2, -1, 1],
                     [3, 2, -1, 3, -1],
                     [2, -1, 3, -1, 2],
                     [-1, 1, -1, 2, -1]]
 
-s = 0
-t = 2
-E = 5
+print(s,t,E)
+
 
 right_vector = [0 for _ in range(len(resistance_graph))]
 matrix = [[0 for _ in range(len(resistance_graph[0]))] for _ in range(len(resistance_graph))]
